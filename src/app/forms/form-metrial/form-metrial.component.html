@@ -1,0 +1,13 @@
+<form class="example-form" #meterialForm='ngForm' (submit)="onSubmit(meterialForm.value)">
+    <mat-form-field class="example-full-width w-100">
+        <mat-label>UserName</mat-label>
+        <input ngModel name="name" matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width w-100">
+        <mat-label>Password</mat-label>
+        <input ngModel name="password" matInput>
+    </mat-form-field>
+    <button mat-raised-button color="primary">Primary</button>
+
+</form>
