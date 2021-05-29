@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-form-metrial',
   templateUrl: './form-metrial.component.html',
@@ -8,13 +8,20 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class FormMetrialComponent implements OnInit {
   constructor(private _snackBar: MatSnackBar) {}
-
+  loginForm = new FormGroup({
+    email: new FormControl('', Validators.required),
+    password: new FormControl(''),
+  });
+  get email() {
+    return this.loginForm.get('email');
+  }
   ngOnInit(): void {}
-  onSubmit(value) {
-    console.log(value);
-    this.openSnackBar(value);
+  onSubmit() {
+    console.log(this.loginForm.value);
+
+    this.openSnackBar(this.loginForm.value);
   }
   openSnackBar(val: any) {
-    this._snackBar.open(`name: ${val?.name} password: ${val.password}`, 'ok');
+    this._snackBar.open(`name: ${val?.email} password: ${val.password}`, 'ok');
   }
 }
